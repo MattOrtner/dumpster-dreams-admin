@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useRef} from 'react'
 
 const ItemForm = ({item, setItem, inventory, setInventory}) => {
+  const fileInputRef = useRef(null)
 
   const handleChange = (evt) => {
     const name = evt.target.name
@@ -12,18 +13,31 @@ const ItemForm = ({item, setItem, inventory, setInventory}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(item) 
     setInventory(...inventory, item)
     alert('You have submitted the form.')
   }
 
+  const addPhotoButton = () => {
+    fileInputRef.current.click()
+  }
   return (
       <div className='create-item'>
         <form className='form' onSubmit={() => handleSubmit}>
-          <legend>UPLOAD +</legend>
-          <img alt=''></img>
-            <input className="inputs" placeholder='Name' type='text' name='name' value={item.name} onChange={handleChange} />
-            <input className="inputs" placeholder='Price' type='number' name='price' value={item.price} onChange={handleChange}  />
+          <div className="wrapper">
+            <input
+              type="file" name="file" id="addBtn" ref={fileInputRef} />
+              <i className="fas fa-plus fa-2x"></i>
+          <input type="button" id="fileBtn" onClick={addPhotoButton} />
+          </div>
+          <input
+            className="inputs"
+            placeholder='Name'
+            type='text'
+            name='name'
+            value={item.name}
+            onChange={handleChange} 
+          />
+          <input className="inputs" placeholder='Price' type='number' name='price' value={item.price} onChange={handleChange}  />
           <input className="inputs" placeholder='Description' type='text' name='description' value={item.description} onChange={handleChange}  />
           <button className='btn' type='submit'>Submit</button>
         </form>
