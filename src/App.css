@@ -24,17 +24,30 @@ img {
 .App-header {
   background-color: #282c34;
   min-height: 20vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   color: white;
+}
+
+.dreams {
+  font-family: 'Satisfy', cursive;
+  grid-column: 2 / span 6;
+  font-size: 60px;
+  align-self: center;
+}
+
+.admin {
+  grid-column: 8 / span 10;
+  align-self: center;
+  font-size: 40px;
+
 }
 
 .inventory {
   display: flex;
   justify-content: center;
   flex-direction: row;
+  /* flex-wrap: wrap; */
 }
 
 .create-item {
@@ -45,7 +58,7 @@ img {
 }
 
 .form {
-  width: 70vw;
+  width: 50vw;
   justify-content: center;
   align-items: center;
 }
