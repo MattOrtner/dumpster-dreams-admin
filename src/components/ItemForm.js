@@ -20,12 +20,16 @@ const ItemForm = ({item, setItem, inventory, setInventory}) => {
   const addPhotoButton = () => {
     fileInputRef.current.click()
   }
+
+  const onFileChange = (e) => {
+    console.log(e.target.files);
+  }
+
   return (
       <div className='create-item'>
         <form className='form' onSubmit={() => handleSubmit}>
           <div className="wrapper">
-            <input
-              type="file" name="file" id="addBtn" ref={fileInputRef} />
+            <input type="file" name="file" id="addBtn" ref={fileInputRef} onChange={onFileChange} />
               <i className="fas fa-plus fa-2x"></i>
           <input type="button" id="fileBtn" onClick={addPhotoButton} />
           </div>
